@@ -3,215 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sports - Vibe Crafters</title>
+    <title>Sports Page</title>
     <style>
-        /* General Reset */
-        * {
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('https://i.pinimg.com/originals/8b/82/87/8b82879d9b8c3c0ad16f80d8aab18022.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        nav {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav ul {
+            list-style: none;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            background: #0c0c0c;
-            color: #f5faff;
-            overflow-x: hidden;
-        }
-
-        header {
-            position: fixed;
-            width: 100%;
-            background: linear-gradient(90deg, #1a1a1a, #2a2a4f);
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 50px;
-            z-index: 1000;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
-        }
-
-        header .logo {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #87ceeb;
-        }
-
-        header nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        header nav ul li {
-            margin: 0 15px;
-        }
-
-        header nav ul li a {
-            text-decoration: none;
-            color: #f5faff;
-            transition: color 0.3s;
-        }
-
-        header nav ul li a:hover {
-            color: #87ceeb;
-        }
-
-        .container {
-            padding: 80px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .title {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .title h1 {
-            font-size: 3em;
-            color: #87ceeb;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 20px;
         }
-
-        .card {
-            background: #1e1e3f;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
-            text-align: center;
-            color: #f5faff;
-            transition: transform 0.3s, box-shadow 0.3s;
+        nav ul li {
+            display: inline;
         }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 1);
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
         }
-
-        .card img {
-            width: 100%;
-            height: 150px;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            object-fit: cover;
+        nav ul li a:hover {
+            color: lightblue;
         }
-
-        .card h3 {
-            font-size: 1.2em;
-            margin-bottom: 10px;
+        .content {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            color: white;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 8px;
         }
-
-        .card p {
-            font-size: 1em;
-            margin-bottom: 15px;
-        }
-
-        .card .actions {
+        .poster-container {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
         }
-
-        .card .actions button {
-            background: #87ceeb;
-            color: #0c0c0c;
-            border: none;
+        .poster {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 8px;
+            width: 200px;
+        }
+        .poster img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+        .poster button {
+            margin-top: 10px;
             padding: 5px 10px;
+            background: green;
+            color: white;
+            border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 1em;
-            transition: background 0.3s;
         }
-
-        .card .actions button:hover {
-            background: #5a9bd4;
-        }
-
-        .card .quantity {
-            font-size: 1.2em;
-            font-weight: bold;
+        .poster button:hover {
+            background: darkgreen;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">Vibe Crafters</div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#">Shop</a></li>
-                <li><a href="#">Cart</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <div class="container">
-        <div class="title">
-            <h1>Sports Posters</h1>
-            <p>Select your favorites and add them to your cart!</p>
+    <nav>
+        <div>
+            <h2>Sports</h2>
         </div>
-        <div class="grid" id="sportsGrid">
-            <!-- Cards will be dynamically generated -->
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Sports.html">Genres</a></li>
+            <li><a href="review.html">Review</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="cart.html">Cart (<span id="cart-count">0</span>)</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h1>Sports Page</h1>
+        <p>Select your favorite sports movies below:</p>
+        <div class="poster-container" id="poster-container">
+            <!-- Posters will be dynamically added here -->
         </div>
     </div>
 
     <script>
-        const sportsGrid = document.getElementById('sportsGrid');
+        // Global cart object
+        const cart = JSON.parse(localStorage.getItem('cart')) || {};
 
-        // Sample data for 50 items
-        const items = Array.from({ length: 50 }, (_, i) => ({
-            id: i + 1,
-            name: `Sports Poster ${i + 1}`,
-            price: 50,
-            image: `https://via.placeholder.com/200x150?text=Poster+${i + 1}`,
-            quantity: 0,
-        }));
+        // Update cart count
+        const updateCartCount = () => {
+            const cartCount = Object.values(cart).reduce((sum, count) => sum + count, 0);
+            document.getElementById('cart-count').textContent = cartCount;
+        };
 
-        // Function to render the items
-        function renderItems() {
-            sportsGrid.innerHTML = '';
-            items.forEach(item => {
-                const card = document.createElement('div');
-                card.classList.add('card');
+        // Save cart to localStorage
+        const saveCart = () => {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        };
 
-                card.innerHTML = `
-                    <img src="${item.image}" alt="${item.name}">
-                    <h3>${item.name}</h3>
-                    <p>Price: ₹${item.price}</p>
-                    <div class="actions">
-                        <button onclick="addToCart(${item.id})">+</button>
-                        <span class="quantity">${item.quantity}</span>
-                    </div>
-                `;
-
-                sportsGrid.appendChild(card);
-            });
+        // Add posters dynamically
+        const posterContainer = document.getElementById('poster-container');
+        for (let i = 1; i <= 50; i++) {
+            const poster = document.createElement('div');
+            poster.className = 'poster';
+            poster.innerHTML = `
+                <img src="https://via.placeholder.com/250x350?text=Poster+${i}" alt="Poster ${i}">
+                <p>Price: 50 INR</p>
+                <button onclick="addToCart(${i})">+ Add to Cart (<span id="count-${i}">0</span>)</button>
+            `;
+            posterContainer.appendChild(poster);
         }
 
-        // Function to handle adding to cart
-        function addToCart(id) {
-            const item = items.find(i => i.id === id);
-            if (item) {
-                item.quantity++;
-                renderItems(); // Re-render the grid to update the quantity
-                updateCartCount();
-            }
-        }
+        // Add to cart functionality
+        const addToCart = (id) => {
+            cart[id] = (cart[id] || 0) + 1;
+            document.getElementById(`count-${id}`).textContent = cart[id];
+            saveCart();
+            updateCartCount();
+        };
 
-        // Function to update the cart count in the header
-        function updateCartCount() {
-            const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
-            document.querySelector('nav ul li:nth-child(3) a').textContent = `Cart (${totalItems})`;
-        }
-
-        // Initial rendering
-        renderItems();
+        // Initialize cart
+        updateCartCount();
     </script>
 </body>
 </html>
-
