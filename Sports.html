@@ -7,21 +7,22 @@
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: url('https://i.pinimg.com/originals/8b/82/87/8b82879d9b8c3c0ad16f80d8aab18022.jpg') no-repeat center center fixed;
-            background-size: cover;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to bottom, #141e30, #243b55);
             color: white;
         }
         nav {
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 10px 20px;
+            background-color: #111;
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
         nav ul {
-            list-style: none;
+            list-style-type: none;
             margin: 0;
             padding: 0;
             display: flex;
@@ -34,45 +35,64 @@
             text-decoration: none;
             color: white;
             font-size: 18px;
+            transition: color 0.3s;
         }
         nav ul li a:hover {
-            color: lightblue;
+            color: #00bcd4;
         }
-        .content {
-            max-width: 1200px;
-            margin: auto;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 8px;
+        .header {
+            text-align: center;
+            padding: 50px 20px;
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .header h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+        .header p {
+            font-size: 1.2rem;
+            color: #ccc;
         }
         .poster-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
             justify-content: center;
+            gap: 20px;
+            padding: 20px;
         }
         .poster {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 10px;
+            background: #111;
+            border: 1px solid #333;
             border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
             width: 200px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .poster:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
         }
         .poster img {
-            max-width: 100%;
-            border-radius: 5px;
+            width: 100%;
+            height: auto;
+        }
+        .poster p {
+            margin: 10px 0;
+            color: #ddd;
         }
         .poster button {
-            margin-top: 10px;
-            padding: 5px 10px;
-            background: green;
-            color: white;
+            background-color: #00bcd4;
             border: none;
-            border-radius: 5px;
+            padding: 10px 15px;
+            color: white;
+            font-size: 16px;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
         .poster button:hover {
-            background: darkgreen;
+            background-color: #0097a7;
         }
     </style>
 </head>
@@ -90,12 +110,13 @@
         </ul>
     </nav>
 
-    <div class="content">
+    <div class="header">
         <h1>Sports Movies</h1>
-        <p>Explore our collection of sports movies and add your favorites to the cart.</p>
-        <div class="poster-container" id="poster-container">
-            <!-- Posters will be dynamically generated -->
-        </div>
+        <p>Browse and add your favorite sports movies to your cart.</p>
+    </div>
+
+    <div class="poster-container" id="poster-container">
+        <!-- Posters will be dynamically generated -->
     </div>
 
     <script>
@@ -139,4 +160,3 @@
     </script>
 </body>
 </html>
-
