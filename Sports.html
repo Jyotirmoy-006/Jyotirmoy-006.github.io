@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sports Genre - Vibe Crafters</title>
+    <title>Sports - Vibe Crafters</title>
     <style>
         /* General Reset */
         * {
@@ -56,117 +56,86 @@
             color: #87ceeb;
         }
 
-        .hero {
-            height: 60vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: url('https://source.unsplash.com/1600x900/?sports') no-repeat center center/cover;
-            position: relative;
+        .container {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .title {
             text-align: center;
+            margin-bottom: 20px;
         }
 
-        .hero:after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(12, 12, 12, 0.6);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            color: #f5faff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-        }
-
-        .hero-content h1 {
+        .title h1 {
             font-size: 3em;
-            margin-bottom: 10px;
-        }
-
-        .hero-content p {
-            font-size: 1.2em;
-        }
-
-        .posters-section {
-            padding: 50px;
-            text-align: center;
-            background: #1a1a1a;
-            border-top: 5px solid #2a2a4f;
-        }
-
-        .posters-section h2 {
-            margin-bottom: 30px;
-            font-size: 2.5em;
             color: #87ceeb;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
         }
 
-        .posters-grid {
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 20px;
-            justify-content: center;
         }
 
-        .poster-card {
+        .card {
             background: #1e1e3f;
+            padding: 15px;
             border-radius: 10px;
-            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
             text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+            color: #f5faff;
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .poster-card:hover {
+        .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 6px 15px rgba(0, 0, 0, 1);
         }
 
-        .poster-card img {
+        .card img {
             width: 100%;
-            height: 300px;
+            height: 150px;
+            border-radius: 10px;
+            margin-bottom: 10px;
             object-fit: cover;
         }
 
-        .poster-card h3 {
-            padding: 15px;
-            color: #f5faff;
+        .card h3 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
         }
 
-        .poster-card a {
-            display: block;
-            padding: 10px;
-            margin: 0 15px 15px;
-            text-decoration: none;
-            color: #0c0c0c;
+        .card p {
+            font-size: 1em;
+            margin-bottom: 15px;
+        }
+
+        .card .actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card .actions button {
             background: #87ceeb;
+            color: #0c0c0c;
+            border: none;
+            padding: 5px 10px;
             border-radius: 5px;
-            transition: background 0.3s, transform 0.3s;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s;
         }
 
-        .poster-card a:hover {
+        .card .actions button:hover {
             background: #5a9bd4;
-            transform: translateY(-3px);
         }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #0c0c0c;
-            border-top: 5px solid #2a2a4f;
+        .card .quantity {
+            font-size: 1.2em;
+            font-weight: bold;
         }
-
-        footer p {
-            font-size: 0.9em;
-            color: #f5faff;
-        }
-
     </style>
 </head>
 <body>
@@ -176,57 +145,73 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="#">Shop</a></li>
-                <li><a href="#">Genres</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#">Cart</a></li>
             </ul>
         </nav>
     </header>
 
-    <div class="hero">
-        <div class="hero-content">
+    <div class="container">
+        <div class="title">
             <h1>Sports Posters</h1>
-            <p>Discover the passion and energy of sports in every design.</p>
+            <p>Select your favorites and add them to your cart!</p>
+        </div>
+        <div class="grid" id="sportsGrid">
+            <!-- Cards will be dynamically generated -->
         </div>
     </div>
 
-    <section class="posters-section">
-        <h2>Featured Sports Posters</h2>
-        <div class="posters-grid">
-            <div class="poster-card">
-                <img src="https://source.unsplash.com/400x300/?football" alt="Football Poster">
-                <h3>Football Fever</h3>
-                <a href="#">View Details</a>
-            </div>
-            <div class="poster-card">
-                <img src="https://source.unsplash.com/400x300/?basketball" alt="Basketball Poster">
-                <h3>Basketball Dreams</h3>
-                <a href="#">View Details</a>
-            </div>
-            <div class="poster-card">
-                <img src="https://source.unsplash.com/400x300/?cricket" alt="Cricket Poster">
-                <h3>Cricket Legends</h3>
-                <a href="#">View Details</a>
-            </div>
-            <div class="poster-card">
-                <img src="https://source.unsplash.com/400x300/?tennis" alt="Tennis Poster">
-                <h3>Tennis Aces</h3>
-                <a href="#">View Details</a>
-            </div>
-            <div class="poster-card">
-                <img src="https://source.unsplash.com/400x300/?running" alt="Running Poster">
-                <h3>Marathon Moments</h3>
-                <a href="#">View Details</a>
-            </div>
-            <div class="poster-card">
-                <img src="https://source.unsplash.com/400x300/?gymnastics" alt="Gymnastics Poster">
-                <h3>Grace in Motion</h3>
-                <a href="#">View Details</a>
-            </div>
-        </div>
-    </section>
+    <script>
+        const sportsGrid = document.getElementById('sportsGrid');
 
-    <footer>
-        <p>&copy; 2024 Vibe Crafters. All rights reserved.</p>
-    </footer>
+        // Sample data for 50 items
+        const items = Array.from({ length: 50 }, (_, i) => ({
+            id: i + 1,
+            name: `Sports Poster ${i + 1}`,
+            price: 50,
+            image: `https://via.placeholder.com/200x150?text=Poster+${i + 1}`,
+            quantity: 0,
+        }));
+
+        // Function to render the items
+        function renderItems() {
+            sportsGrid.innerHTML = '';
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.classList.add('card');
+
+                card.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <h3>${item.name}</h3>
+                    <p>Price: ₹${item.price}</p>
+                    <div class="actions">
+                        <button onclick="addToCart(${item.id})">+</button>
+                        <span class="quantity">${item.quantity}</span>
+                    </div>
+                `;
+
+                sportsGrid.appendChild(card);
+            });
+        }
+
+        // Function to handle adding to cart
+        function addToCart(id) {
+            const item = items.find(i => i.id === id);
+            if (item) {
+                item.quantity++;
+                renderItems(); // Re-render the grid to update the quantity
+                updateCartCount();
+            }
+        }
+
+        // Function to update the cart count in the header
+        function updateCartCount() {
+            const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
+            document.querySelector('nav ul li:nth-child(3) a').textContent = `Cart (${totalItems})`;
+        }
+
+        // Initial rendering
+        renderItems();
+    </script>
 </body>
 </html>
+
