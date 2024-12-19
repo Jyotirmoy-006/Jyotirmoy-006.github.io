@@ -58,24 +58,27 @@
 
 
         .hero {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: url('https://i.pinimg.com/originals/04/88/0b/04880b7306d03d793144ba792859eab5.jpg') no-repeat center center/cover;
-    position: relative;
-    text-align: center;
-}
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url('https://i.pinimg.com/originals/04/88/0b/04880b7306d03d793144ba792859eab5.jpg') no-repeat center center;
+            background-size: cover; /* Ensures the image fills the hero section */
+            position: relative;
+            text-align: center;
+            z-index: 1;
+        }
 
-.hero:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(12, 12, 12, 0.3); /* Reduced opacity */
-}
+        .hero:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2); /* Further reduced opacity */
+            z-index: 2;
+        }
 
 
 
