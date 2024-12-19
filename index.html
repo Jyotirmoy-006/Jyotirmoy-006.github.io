@@ -3,84 +3,422 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Personal Web Page</title>
+    <title>Vibe Crafters</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #0c0c0c;
+            color: #f5faff;
+            overflow-x: hidden;
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            background: linear-gradient(90deg, #1a1a1a, #2a2a4f);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        header .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #87ceeb;
+        }
+
+        header nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        header nav ul li {
+            margin: 0 15px;
+        }
+
+        header nav ul li a {
+            text-decoration: none;
+            color: #f5faff;
+            transition: color 0.3s;
+        }
+
+        header nav ul li a:hover {
+            color: #87ceeb;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url('https://source.unsplash.com/1600x900/?poster,art') no-repeat center center/cover;
+            position: relative;
+            text-align: center;
+        }
+
+        .hero:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(12, 12, 12, 0.6);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            color: #f5faff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-content h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .hero-content a {
+            padding: 10px 20px;
+            font-size: 1em;
+            text-decoration: none;
+            color: #0c0c0c;
+            background: #87ceeb;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content a:hover {
+            background: #5a9bd4;
+            transform: translateY(-3px);
+        }
+
+        .about {
+            padding: 50px;
+            text-align: center;
+            background: #1a1a1a;
+            border-top: 5px solid #2a2a4f;
+        }
+
+        .about h2 {
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            color: #87ceeb;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .about p {
+            font-size: 1.2em;
+            line-height: 1.5;
+            color: #dcdcdc;
+        }
+
+        .features {
+            padding: 50px;
+            background: #121212;
+            border-top: 5px solid #2a2a4f;
+        }
+
+        .features-grid {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .feature-card {
+            background: #1e1e3f;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+            text-align: center;
+            color: #f5faff;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 1);
+        }
+
+        .feature-card img {
+            width: 100%;
+            height: 240px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+
+        .genres {
+            padding: 50px;
+            background: #1a1a1a;
+            color: #f5faff;
+            text-align: center;
+            border-top: 5px solid #2a2a4f;
+        }
+
+        .genres h2 {
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            color: #87ceeb;
+        }
+
+        .genres-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .genre-card {
+            background: #1e1e3f;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .genre-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 1);
+        }
+
+        .genre-card img {
+            width: 100%;
+            height: 310px;
+            object-fit: cover;
+        }
+
+        .genre-card h3 {
+            padding: 15px;
+            color: #f5faff;
+        }
+
+        .genres-grid a {
+            text-decoration: none;
+        }
+
+        .features-grid a {
+            text-decoration: none;
+        }
+
+        .reviews {
+            padding: 50px;
+            background: #121212;
+            color: #f5faff;
+            text-align: center;
+            border-top: 5px solid #2a2a4f;
+        }
+
+        .reviews h2 {
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            color: #87ceeb;
+        }
+
+        .review {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #1e1e3f;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+            color: #f5faff;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .review:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 1);
+        }
+
+        .review h3 {
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+
+        .review p {
+            font-size: 1.2em;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #0c0c0c;
+            border-top: 5px solid #2a2a4f;
+        }
+
+        footer p {
+            font-size: 0.9em;
+            color: #f5faff;
+        }
+
+    </style>
 </head>
 <body>
     <header>
-        <div class="top-section">
-            <h1>Welcome to My Personal Web Page!</h1>
-            <p>This is the place where I showcase my educational background, professional experience, achievements, projects, and more. Feel free to explore and learn more about my journey.</p>
-            <div class="button-container">
-                <button class="btn">Home</button>
-                <button class="btn">About Me</button>
-                <button class="btn">Educational Background</button>
-                <button class="btn">Experience</button>
-            </div>
-        </div>
+        <div class="logo">Vibe Crafters</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#genres">Genres</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <section class="image-section">
-        <img src="js.jpg" alt="Profile Picture">
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Vibe Crafters</h1>
+            <p>Find your perfect design or create your own masterpiece.</p>
+            <a href="#shop">Start Shopping</a>
+        </div>
+    </div>
+
+    <section id="about" class="about">
+        <h2>About Us</h2>
+        <p>At Vibe Crafters, we believe that every wall deserves a story. With a collection of unique, inspiring, and vibrant posters, we help you craft the perfect vibe for your space. From custom designs to trending artwork, we cater to all your aesthetic needs.</p>
     </section>
 
-    <section class="about-me">
-        <h2>About Me</h2>
-        <p>I am currently pursuing B.Tech in CSE (AI) at UEM, Kolkata. I am also a content writer and a DBMS expert. My passions include learning new languages, developing websites, and exploring cutting-edge AI technologies. I am flexible and reliable with excellent time management skills. Enthusiastic and self-motivated, I take pride in my responsibility and strong work ethic. I thrive in team settings and can adapt to challenging situations.</p>
+    <section id="shop" class="features">
+        <h2>Our Features</h2>
+        <div class="features-grid">
+            <a href="Trending Designs.html">
+                <div class="feature-card">
+                    <img src="https://i.pinimg.com/474x/b8/4c/f9/b84cf9ca583f360e40a07aa593e9110b.jpg" alt="Poster 1">
+                    <h3>Trending Designs</h3>
+                    <p>Explore the latest and trending designs tailored to modern aesthetics.</p>
+                </div>
+            </a>
+            <a href="Custom Creations.html">
+                <div class="feature-card">
+                    <img src="https://i.pinimg.com/474x/fe/85/77/fe8577ae5df9f77168d3c9e57498c816.jpg" alt="Poster 2">
+                    <h3>Custom Creations</h3>
+                    <p>Create personalized designs that speak your story.</p>
+                </div>
+            </a>
+            <a href="Premium Quality.html">
+                <div class="feature-card">
+                    <img src="https://i.pinimg.com/474x/31/28/c7/3128c7c2d485b0f021bdb7425a9f4b82.jpg" alt="Poster 3">
+                    <h3>Premium Quality</h3>
+                    <p>Enjoy the finest quality prints with vibrant colors and durability.</p>
+                </div>
+            </a>
+        </div>
     </section>
 
-    <section class="education">
-        <h2>Educational Background</h2>
-        <p>Class 10 (ICSE): St. Michael's School, Siliguri - 95.6%<br>
-           Class 12 (CBSE): Delhi Public School, Durgapur - 87.4%<br>
-           Currently pursuing B.Tech Degree in CSE (AI) from University of Engineering and Management, Kolkata.</p>
+    <section id="genres" class="genres">
+        <h2>Explore Genres</h2>
+        <div class="genres-grid">
+            <a href="Sports.html">
+                <div class="genre-card">
+                    <img src="https://i.pinimg.com/236x/0a/9c/b6/0a9cb6b1b96a2b795fe5551b0a11bd66.jpg" alt="Sports">
+                    <h3>Sports</h3>
+                </div>
+            </a>
+            <a href="Anime.html">
+                <div class="genre-card                ">
+                    <img src="https://i.pinimg.com/236x/2f/de/98/2fde98c959b414caa067d09154c8f86b.jpg" alt="Anime">
+                    <h3>Anime</h3>
+                </div>
+            </a>
+            <a href="Motivational.html">
+                <div class="genre-card">
+                    <img src="https://i.pinimg.com/236x/fd/d9/fb/fdd9fb6d98f4d6426afbba0688aa8762.jpg" alt="Motivational">
+                    <h3>Motivational</h3>
+                </div>
+            </a>
+            <a href="Nature.html">
+                <div class="genre-card">
+                    <img src="https://i.pinimg.com/236x/9e/c8/ba/9ec8bac3119a7127998dc8ade76326db.jpg" alt="Nature">
+                    <h3>Nature</h3>
+                </div>
+            </a>
+            <a href="Manga.html">
+                <div class="genre-card">
+                    <img src="https://i.pinimg.com/236x/ab/79/e0/ab79e037d02f6002079d52b7d3c000de.jpg" alt="Manga">
+                    <h3>Manga</h3>
+                </div>
+            </a>
+            <a href="Comics.html">
+                <div class="genre-card">
+                    <img src="https://i.pinimg.com/236x/c2/47/6d/c2476d1fb79012b2212b97994b8e43a6.jpg" alt="Comics">
+                    <h3>Comics</h3>
+                </div>
+            </a>
+            <a href="Movies.html">
+                <div class="genre-card">
+                    <img src="https://i.pinimg.com/474x/e7/88/82/e7888275d9816a3c5d01e689e27f3dc8.jpg" alt="Movies">
+                    <h3>Movies</h3>
+                </div>
+            </a>
+            <a href="Music.html">
+                <div class="genre-card">
+                    <img src="https://i.pinimg.com/474x/02/9d/58/029d5865b7fd8b5dd13afc44cc215b21.jpg" alt="Music">
+                    <h3>Music</h3>
+                </div>
+            </a>
+            <a href="Religion and Culture.html">
+                <div class="genre-card">
+                    <img src="https://i.pinimg.com/474x/3b/64/c9/3b64c964dcd5b945310ec1271739f75d.jpg" alt="Religion and Culture">
+                    <h3>Religion and Culture</h3>
+                </div>
+            </a>
+            <a href="Korean.html">
+                <div class="genre-card">
+                    <img src="https://i.pinimg.com/236x/2b/19/0a/2b190a20b1c9b442c726b220a28a84cd.jpg" alt="Korean">
+                    <h3>Korean</h3>
+                </div>
+            </a>
+            <a href="Cars.html">
+                <div class="genre-card">
+                    <img src="https://i.pinimg.com/474x/0e/71/bb/0e71bb162293b8459f67e0810d574bac.jpg" alt="Cars">
+                    <h3>Cars</h3>
+                </div>
+            </a>
+            <a href="Fantasy.html">
+                <div class="genre-card">
+                    <img src="https://i.pinimg.com/236x/c8/25/e6/c825e6fe041f5e87afe7e021342773ad.jpg" alt="Fantasy">
+                    <h3>Fantasy</h3>
+                </div>
+            </a>
+        </div>
     </section>
 
-    <section class="experience">
-        <h2>Experience</h2>
-        <p>Content Writer at NETTV4U</p>
-    </section>
-
-    <section class="achievements">
-        <h2>Awards and Achievements</h2>
-        <p>16th in State Level Wiz Spell Bee<br>
-           Two-time Bronze Medalist in State Taekwondo Championship</p>
-    </section>
-
-    <section class="research">
-        <h2>Research Thrust Area</h2>
-        <p>As a B.Tech Student in CSE (AI), my research interests revolve around:<br>
-           - Natural Language Processing (NLP): Focus on sentiment analysis, chatbots, language translation, and text summarization.<br>
-           - Cybersecurity and AI: Study the application of AI techniques in detecting and mitigating security threats.<br>
-           - Data Mining and Big Data Analytics: Analyze large datasets to extract meaningful insights.</p>
-    </section>
-
-    <section class="events">
-        <h2>List of Events (Organized/Attended)</h2>
-        <p>Melaminds Quiz 2024<br>
-           Smart Indian Hackathon 2024<br>
-           Web and App Development Workshop</p>
-    </section>
-
-    <section class="poster-presentation">
-        <h2>Poster/Paper Presentation</h2>
-        <p>I participated in a poster competition on the Application of Artificial Intelligence in Chemistry and Biotechnology. Poster Topic: Genomic Alchemy: AI and The Rise of Synthetic Biology.</p>
-    </section>
-
-    <section class="courses">
-        <h2>Courses Completed</h2>
-        <p>AI Prompt Engineering from Internshala<br>
-           Currently doing Soft Skills and Personality Development course from NPTEL.</p>
-    </section>
-
-    <section class="contact">
-        <h2>Contact Address</h2>
-        <p>Email: santrajyotirmoy2006@gmail.com<br>
-           Phone: 8334906283</p>
+    <section id="reviews" class="reviews">
+        <h2>Customer Reviews</h2>
+        <div class="review">
+            <h3>Jane Doe</h3>
+            <p>"Absolutely love the posters! The quality and design exceeded my expectations."</p>
+        </div>
+        <div class="review">
+            <h3>John Smith</h3>
+            <p>"The custom creations are fantastic. I got exactly what I wanted for my living room."</p>
+        </div>
     </section>
 
     <footer>
-        <p>&copy; 2024 Jyotirmoy Santra. All Rights Reserved.</p>
+        <p>&copy; 2024 Vibe Crafters. All rights reserved.</p>
     </footer>
 </body>
 </html>
